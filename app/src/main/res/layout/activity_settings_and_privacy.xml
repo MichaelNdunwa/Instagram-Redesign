@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SettingsAndPrivacyActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/black" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/search_bar_background"
+                android:drawableStart="@drawable/search_icon"
+                android:drawablePadding="10dp"
+                android:hint="Search"
+                android:paddingStart="10dp"
+                android:textColorHint="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/your_account_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Your account"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_bar" />
+
+            <TextView
+                android:id="@+id/meta_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:text="Meta"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/meta_icon"
+                app:layout_constraintBottom_toBottomOf="@id/your_account_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/your_account_tv" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:clickable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/your_account_tv">
+
+                <ImageView
+                    android:id="@+id/circled_profile_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/circled_profile_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/password_security_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/accounts_center_tv" />
+
+                <TextView
+                    android:id="@+id/accounts_center_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Accounts Center"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/circled_profile_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/password_security_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Password, security and privacy"
+                    android:textColor="@color/light_dark"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@id/accounts_center_tv"
+                    app:layout_constraintTop_toBottomOf="@id/accounts_center_tv" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_right_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/password_security_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/accounts_center_tv" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:text="Manage your connected experiences and account settings across Meta technologies."
+                android:textColor="@color/light_dark"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_button" />
+
+            <View
+                android:id="@+id/line_view_1"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/description_tv" />
+
+            <TextView
+                android:id="@+id/how_you_use_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="How you use Instagram"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_view_1" />
+
+            <TextView
+                android:id="@+id/notifications_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:clickable="true"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Notifications"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/bell_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/how_you_use_tv" />
+
+            <TextView
+                android:id="@+id/time_spent_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Time spent"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/clock_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/notifications_button" />
+
+            <View
+                android:id="@+id/line_view_2"
+                android:layout_width="match_parent"
+android:layout_height="8dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/time_spent_button" />
+
+            <TextView
+                android:id="@+id/what_you_see_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="What you see"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_view_2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/favorite_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/what_you_see_tv">
+
+                <ImageView
+                    android:id="@+id/favorite_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/favorite_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/favorite_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Favorite"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/favorite_iv"
+                    app:layout_constraintStart_toEndOf="@id/favorite_iv"
+                    app:layout_constraintTop_toTopOf="@id/favorite_iv" />
+
+                <ImageView
+                    android:id="@+id/forward_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_right_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/favorite_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/favorite_tv" />
+
+                <TextView
+                    android:id="@+id/favorite_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="0"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/forward_arrow"
+                    app:layout_constraintEnd_toStartOf="@id/forward_arrow"
+                    app:layout_constraintTop_toTopOf="@id/forward_arrow" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mute_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favorite_button">
+
+                <ImageView
+                    android:id="@+id/slash_bell_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/slash_bell_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/muted_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Muted"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/slash_bell_iv"
+                    app:layout_constraintStart_toEndOf="@id/slash_bell_iv"
+                    app:layout_constraintTop_toTopOf="@id/slash_bell_iv" />
+
+                <ImageView
+                    android:id="@+id/right_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_right_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/muted_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/muted_tv" />
+
+                <TextView
+                    android:id="@+id/mute_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="0"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/right_arrow"
+                    app:layout_constraintEnd_toStartOf="@id/right_arrow"
+                    app:layout_constraintTop_toTopOf="@id/right_arrow" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/suggestion_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Suggested content"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/content_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mute_button" />
+
+
+            <TextView
+                android:id="@+id/like_and_share_count_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Like and share counts"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/heart_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/suggestion_button" />
+
+            <View
+                android:id="@+id/line_view_3"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/like_and_share_count_button" />
+
+            <TextView
+                android:id="@+id/privacy_settings_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Who can see your content"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_view_3" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_privacy_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/privacy_settings_tv">
+
+                <ImageView
+                    android:id="@+id/lock_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/lock_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/privacy_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Account privacy"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/lock_iv"
+                    app:layout_constraintStart_toEndOf="@id/lock_iv"
+                    app:layout_constraintTop_toTopOf="@id/lock_iv" />
+
+                <ImageView
+                    android:id="@+id/nav_arrow_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_right_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/privacy_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/privacy_tv" />
+
+                <TextView
+                    android:id="@+id/privacy_selection_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="Public"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/nav_arrow_1"
+                    app:layout_constraintEnd_toStartOf="@id/nav_arrow_1"
+                    app:layout_constraintTop_toTopOf="@id/nav_arrow_1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/close_friends_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_privacy_button">
+
+                <ImageView
+                    android:id="@+id/circled_star_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_circle_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/close_friend_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Close Friends"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/circled_star_iv"
+                    app:layout_constraintStart_toEndOf="@id/circled_star_iv"
+                    app:layout_constraintTop_toTopOf="@id/circled_star_iv" />
+
+                <ImageView
+                    android:id="@+id/nav_arrow_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_right_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/close_friend_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/close_friend_tv" />
+
+                <TextView
+                    android:id="@+id/close_friend_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="0"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/nav_arrow_2"
+                    app:layout_constraintEnd_toStartOf="@id/nav_arrow_2"
+                    app:layout_constraintTop_toTopOf="@id/nav_arrow_2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/blocked_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/close_friends_button">
+
+                <ImageView
+                    android:id="@+id/blocked_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/block_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/blocked_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Blocked"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/blocked_iv"
+                    app:layout_constraintStart_toEndOf="@id/blocked_iv"
+                    app:layout_constraintTop_toTopOf="@id/blocked_iv" />
+
+                <ImageView
+                    android:id="@+id/nav_arrow_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_right_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/blocked_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/blocked_tv" />
+
+                <TextView
+                    android:id="@+id/block_counter_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="0"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/nav_arrow_3"
+                    app:layout_constraintEnd_toStartOf="@id/nav_arrow_3"
+                    app:layout_constraintTop_toTopOf="@id/nav_arrow_3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/hide_story_and_live_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/blocked_button">
+
+                <ImageView
+                    android:id="@+id/hide_story_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hide_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/hide_story_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Hide story and live"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/hide_story_iv"
+                    app:layout_constraintStart_toEndOf="@id/hide_story_iv"
+                    app:layout_constraintTop_toTopOf="@id/hide_story_iv" />
+
+                <ImageView
+                    android:id="@+id/nav_arrow_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_right_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/hide_story_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/hide_story_tv" />
+
+                <TextView
+                    android:id="@+id/hide_story_counter_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="0"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/nav_arrow_4"
+                    app:layout_constraintEnd_toStartOf="@id/nav_arrow_4"
+                    app:layout_constraintTop_toTopOf="@id/nav_arrow_4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/line_view_4"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hide_story_and_live_button" />
+
+            <TextView
+                android:id="@+id/interact_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="How others can interact with you"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_view_4" />
+
+
+            <TextView
+                android:id="@+id/message_and_stories_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Message and story replies"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/message_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/interact_tv" />
+
+            <TextView
+                android:id="@+id/tag_and_mention_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Tags and mentions"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/at_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/message_and_stories_button" />
+
+            <TextView
+                android:id="@+id/comment_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Comments"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/comment_right_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tag_and_mention_button" />
+
+            <TextView
+                android:id="@+id/sharing_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Sharing and remixes"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/reload_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/comment_button" />
+
+            <TextView
+                android:id="@+id/restrict_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Restricted"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/restrict_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sharing_button" />
+
+
+            <TextView
+                android:id="@+id/limit_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Limit interactions"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/limit_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restrict_button" />
+
+            <TextView
+                android:id="@+id/hidden_words_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Hidden words"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/text_aa_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/limit_button" />
+
+            <TextView
+                android:id="@+id/follow_and_invite_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Follow and invite friends"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/follow_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hidden_words_button" />
+
+            <View
+                android:id="@+id/line_view_5"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/follow_and_invite_button" />
+
+            <TextView
+                android:id="@+id/app_and_media_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="How others can interact with you"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_view_5" />
+
+            <TextView
+                android:id="@+id/downloading_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Archiving and downloading"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/download_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/app_and_media_tv" />
+
+
+            <TextView
+                android:id="@+id/accessibility_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Accessibility"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/accessibility_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/downloading_button" />
+
+
+            <TextView
+                android:id="@+id/language_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Language"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/language_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/accessibility_button" />
+
+            <TextView
+                android:id="@+id/data_and_media_quality_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Data usage and media quality"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/data_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/language_button" />
+
+            <TextView
+                android:id="@+id/website_permission_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Website permissions"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/tablet_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/data_and_media_quality_button" />
+
+            <View
+                android:id="@+id/line_view_6"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/website_permission_button" />
+
+            <TextView
+                android:id="@+id/families_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="For families"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_view_6" />
+
+
+            <TextView
+                android:id="@+id/supervision_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Supervision"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/supervision"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/families_tv" />
+
+            <View
+                android:id="@+id/line_view_7"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/supervision_button" />
+
+            <TextView
+                android:id="@+id/professional_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="For professionals"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_view_7" />
+
+
+            <TextView
+                android:id="@+id/account_type_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Account type and tools"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/square_poll_vertical_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/professional_tv" />
+
+            <View
+                android:id="@+id/line_view_8"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_type_button" />
+
+            <TextView
+                android:id="@+id/order_and_payment_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Your orders and fundraisers"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_view_8" />
+
+
+            <TextView
+                android:id="@+id/order_and_fundraiser_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Orders and payments"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/archive_folder_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/order_and_payment_tv" />
+
+
+            <View
+                android:id="@+id/line_view_9"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/order_and_fundraiser_button" />
+
+            <TextView
+                android:id="@+id/more_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="More info and support"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_view_9" />
+
+
+            <TextView
+                android:id="@+id/help_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Help"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/help_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/more_info_tv" />
+
+             <TextView
+                android:id="@+id/account_status_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Account Status"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/user_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/help_button" />
+
+             <TextView
+                android:id="@+id/about_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="About"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:drawableStartCompat="@drawable/about_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_status_button" />
+
+
+            <View
+                android:id="@+id/line_view_10"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/about_button" />
+
+            <TextView
+                android:id="@+id/login_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Login"
+                android:textColor="@color/light_dark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_view_10" />
+
+
+            <TextView
+                android:id="@+id/add_account_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Add account"
+                android:textColor="@color/blue"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/login_tv" />
+
+            <TextView
+                android:id="@+id/logout_user_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Log out michael_ndunwa"
+                android:textColor="@color/red"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_account_button" />
+
+            <TextView
+                android:id="@+id/logout_all_user"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Log out all accounts"
+                android:textColor="@color/red"
+                android:textSize="14sp"
+                app:drawableEndCompat="@drawable/arrow_right_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logout_user_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

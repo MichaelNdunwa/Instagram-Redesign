@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/settings_and_privacy"
+        android:title="Settings and Privacy"
+        android:icon="@drawable/settings_icon" />
+
+    <!-- <item
+        android:id="@+id/your_activity"
+        android:title="Your activity"
+        android:icon="@drawable/activity_icon" />
+
+     <item
+        android:id="@+id/archive"
+        android:title="Archive"
+        android:icon="@drawable/archive_icon" />
+
+     <item
+        android:id="@+id/qr_code"
+        android:title="QR code"
+        android:icon="@drawable/qr_code_icon" />
+-->
+     <item
+        android:id="@+id/bookmark"
+        android:title="Bookmark"
+        android:icon="@drawable/bookmark_icon" />
+
+  <!--   <item
+        android:id="@+id/Supervision"
+        android:title="Supervision"
+        android:icon="@drawable/supervision" />
+
+     <item
+        android:id="@+id/order_and_payments"
+        android:title="Orders and payments"
+        android:icon="@drawable/payment_card_icon" />
+
+     <item
+        android:id="@+id/meta_verified"
+        android:title="Meta Verified"
+        android:icon="@drawable/verified_icon" />
+
+     <item
+        android:id="@+id/close_friend"
+        android:title="Close Friends"
+        android:icon="@drawable/close_friends_icon" />
+
+     <item
+        android:id="@+id/favorites"
+        android:title="Favorites"
+        android:icon="@drawable/favorites" />
+-->
+</menu>
