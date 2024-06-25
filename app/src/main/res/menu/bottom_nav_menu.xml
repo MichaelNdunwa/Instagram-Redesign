@@ -12,7 +12,7 @@
         android:icon="@drawable/explore_icon" />
 
     <item
-        android:id="@+id/add"
+        android:id="@+id/add_post"
         android:title="add"
         android:icon="@drawable/add_icon" />
 

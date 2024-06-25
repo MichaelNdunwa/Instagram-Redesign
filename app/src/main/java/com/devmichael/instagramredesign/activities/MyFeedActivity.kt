@@ -1,15 +1,12 @@
 package com.devmichael.instagramredesign.activities
 
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.IconCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.devmichael.instagramredesign.R
 import com.devmichael.instagramredesign.databinding.ActivityFeedMyBinding
@@ -47,7 +44,7 @@ class MyFeedActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> openFragment(HomeFragment())
                 R.id.explore -> openFragment(ExploreFragment())
-                R.id.add -> openFragment(AddFragment())
+                R.id.add_post -> openFragment(AddFragment())
                 R.id.notifications -> openFragment(NotificationsFragment())
                 R.id.profile -> openFragment(ProfileFragment())
             }
