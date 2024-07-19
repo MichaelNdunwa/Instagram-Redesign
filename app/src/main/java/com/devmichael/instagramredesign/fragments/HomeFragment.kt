@@ -3,7 +3,6 @@ package com.devmichael.instagramredesign.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -41,13 +40,9 @@ class HomeFragment : Fragment() {
 
     private fun createStatus() {
         val statusList = mutableListOf<StatusModel>()
-        statusList.add(StatusModel(R.drawable.status_image_1, R.drawable.ayo_profile_image, "Ayo"))
-        statusList.add(StatusModel(R.drawable.status_image_2, R.drawable.alex_profile_image, "Alex"))
-        statusList.add(StatusModel(R.drawable.status_image_3, R.drawable.toa_profile_image, "Toa"))
-        statusList.add(StatusModel(R.drawable.status_image_4, R.drawable.christina_profile_image, "Christina"))
-        statusList.add(StatusModel(R.drawable.status_image_5, R.drawable.joseph_profile_image, "Joseph"))
-        statusList.add(StatusModel(R.drawable.status_image_6, R.drawable.charles_profile_image, "Charles"))
-        statusList.add(StatusModel(R.drawable.status_image_7, R.drawable.michael_profile_image, "Michael"))
+        repeat(15) {
+            statusList.add(StatusModel(R.drawable.reading_alone, R.drawable.ayo_profile_image, "Ayo"))
+        }
 
         binding.statusRecyclerView.adapter = StatusAdapter(statusList)
         binding.statusRecyclerView.setHasFixedSize(true)
@@ -60,7 +55,7 @@ class HomeFragment : Fragment() {
         repeat(number) {
             postList.add(
                 PostModel(R.drawable.ayo_profile_image, "Ayo", "New York",
-                    "June 11", R.drawable.someone_coding_image, "New York is wonderful.")
+                    "June 11", R.drawable.reading_alone, "New York is wonderful.")
             )
         }
 
@@ -71,7 +66,6 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

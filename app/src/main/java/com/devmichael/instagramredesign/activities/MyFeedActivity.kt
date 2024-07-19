@@ -1,5 +1,6 @@
 package com.devmichael.instagramredesign.activities
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -10,7 +11,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.devmichael.instagramredesign.R
 import com.devmichael.instagramredesign.databinding.ActivityFeedMyBinding
-import com.devmichael.instagramredesign.fragments.AddFragment
 import com.devmichael.instagramredesign.fragments.ExploreFragment
 import com.devmichael.instagramredesign.fragments.HomeFragment
 import com.devmichael.instagramredesign.fragments.NotificationsFragment
@@ -44,7 +44,10 @@ class MyFeedActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> openFragment(HomeFragment())
                 R.id.explore -> openFragment(ExploreFragment())
-                R.id.add_post -> openFragment(AddFragment())
+                R.id.add_post -> {
+                    val intent = Intent(this, AddPostActivity::class.java)
+                    startActivity(intent)
+                }
                 R.id.notifications -> openFragment(NotificationsFragment())
                 R.id.profile -> openFragment(ProfileFragment())
             }

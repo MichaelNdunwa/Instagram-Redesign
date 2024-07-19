@@ -1,4 +1,4 @@
-package com.devmichael.instagramredesign.fragments
+package com.devmichael.instagramredesign.fragments.main_user_profile
 
 import android.app.Dialog
 import android.content.Intent
@@ -43,5 +43,7 @@ class ProfileSettingsDialogFragment : BottomSheetDialogFragment() {
 
         }
     }
+
+
 
 }

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.devmichael.instagramredesign.R
 import com.devmichael.instagramredesign.databinding.FragmentNotificationsBinding
 
 class NotificationsFragment : Fragment() {
@@ -32,6 +34,19 @@ class NotificationsFragment : Fragment() {
 
         toolbar.setNavigationOnClickListener {
             (activity as AppCompatActivity).onBackPressed()
+        }
+        binding.nestedScrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (scrollY == 0) {
+                // Scrolling has stopped at the top
+                binding.notificationToolbar.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
+            }
+            /* else if (scrollY == v.getChildAt(0).height - v.height) {
+                // Scrolling has stopped at the bottom
+            } */
+            else {
+                // Scrolling is still in progress
+                binding.notificationToolbar.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.red))
+            }
         }
     }
 

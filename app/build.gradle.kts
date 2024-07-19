@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+
+//    id("com.android.application")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -49,9 +52,21 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("de.hdodenhof:circleimageview:3.1.0")
-    implementation("com.mikhaellopez:circularimageview:4.3.1")
+
+    //Circular Image:
+    implementation(libs.circleimageview)
+    implementation(libs.circularimageview)
 
     //ViewPager:
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation(libs.androidx.viewpager2)
+
+    //Firebase:
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.storage)
+
+    //Picasso:
+    implementation(libs.picasso)
 }

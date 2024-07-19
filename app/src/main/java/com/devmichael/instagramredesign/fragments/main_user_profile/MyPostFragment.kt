@@ -1,10 +1,10 @@
-package com.devmichael.instagramredesign.fragments
+package com.devmichael.instagramredesign.fragments.main_user_profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.devmichael.instagramredesign.R
 import com.devmichael.instagramredesign.adapters.MyPostAdapter
