@@ -64,6 +64,8 @@ class UserProfileFragment(private val user: UserModel) : Fragment() {
         //Get the total number of followers and following:
         firebaseUtils.numberOfFollowers(user.uid, binding.followersCounter)
         firebaseUtils.numberOfFollowing(user.uid, binding.followingCounter)
+//        binding.followersCounter.text = firebaseUtils.numberOfFollowers(user.uid)
+//        binding.followingCounter.text = firebaseUtils.numberOfFollowing(user.uid)
 
 
         return binding.root

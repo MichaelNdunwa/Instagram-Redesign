@@ -139,46 +139,4 @@ class FirebaseUtils() {
         })
     }
 
-
-    /*fun numberOfFollowers(firebaseUser: FirebaseUser?, textView: TextView) {
-        val followersRef = firebaseUser!!.uid.let { currentUserId ->
-            FirebaseDatabase.getInstance().reference
-                .child("follow").child(currentUserId)
-                .child("followers")
-        }
-
-        followersRef.addValueEventListener(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    textView.text = snapshot.childrenCount.toString()
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }
-
-    fun numberOfFollowing(firebaseUser: FirebaseUser?, textView: TextView) {
-        val followersRef = firebaseUser!!.uid.let { currentUserId ->
-            FirebaseDatabase.getInstance().reference
-                .child("follow").child(currentUserId)
-                .child("following")
-        }
-
-        followersRef.addValueEventListener(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    textView.text = snapshot.childrenCount.toString()
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }*/
 }

@@ -31,4 +31,20 @@
 
     </style>
 
+
+    <!-- TabLayout TextAppearance -->
+    <style name="TabLayoutTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- EditText Theme -->
+    <style name="SearchTheme" parent="Widget.AppCompat.EditText">
+        <item name="android:radius">10dp</item>
+    </style>
+
+    <!-- Button Themes -->
+    <style name="RemoveButtonTheme" parent="Widget.AppCompat.Button">
+        <item name="background">@color/snow</item>
+        <item name="android:radius">10dp</item>
+    </style>
 </resources>

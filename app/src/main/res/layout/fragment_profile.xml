@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ProfileFragment">
+    tools:context=".fragments.LoggedInProfileFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/navAndTitleToolbar"
@@ -21,7 +21,7 @@
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="wanda_s"
+                tools:text="wanda_s"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -70,7 +70,7 @@
                 android:id="@+id/fullName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wanda S."
+                tools:text="Wanda S."
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -81,7 +81,7 @@
                 android:id="@+id/biography"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Photographer / New York"
+                tools:text="Photographer / New York"
                 android:textColor="@color/red"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/fullName"
@@ -100,6 +100,7 @@
                 app:layout_constraintTop_toTopOf="@id/profileImage">
 
                 <LinearLayout
+                    android:id="@+id/post_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -126,6 +127,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/followers_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -152,6 +154,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/following_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

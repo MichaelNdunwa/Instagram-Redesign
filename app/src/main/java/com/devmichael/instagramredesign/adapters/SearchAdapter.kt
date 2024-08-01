@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.devmichael.instagramredesign.R
 import com.devmichael.instagramredesign.databinding.SearchViewResultHolderBinding
-import com.devmichael.instagramredesign.fragments.ProfileFragment
+import com.devmichael.instagramredesign.fragments.LoggedInProfileFragment
 import com.devmichael.instagramredesign.fragments.UserProfileFragment
 import com.devmichael.instagramredesign.models.UserModel
 import com.google.firebase.auth.FirebaseAuth
@@ -36,7 +36,7 @@ class SearchAdapter(private var searchList: List<UserModel>, private var activit
             root.setOnClickListener {
                 val loggedInUserId = FirebaseAuth.getInstance().currentUser!!.uid
                 if (loggedInUserId == searchResult.uid) {
-                    activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, ProfileFragment()).addToBackStack(null).commit()
+                    activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, LoggedInProfileFragment()).addToBackStack(null).commit()
                 } else {
                     val fragment = UserProfileFragment(user = searchResult)
                     val fragmentManager = activity.supportFragmentManager

@@ -14,7 +14,7 @@ import com.devmichael.instagramredesign.databinding.ActivityFeedMyBinding
 import com.devmichael.instagramredesign.fragments.ExploreFragment
 import com.devmichael.instagramredesign.fragments.HomeFragment
 import com.devmichael.instagramredesign.fragments.NotificationsFragment
-import com.devmichael.instagramredesign.fragments.ProfileFragment
+import com.devmichael.instagramredesign.fragments.LoggedInProfileFragment
 
 class MyFeedActivity : AppCompatActivity() {
 
@@ -49,7 +49,7 @@ class MyFeedActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.notifications -> openFragment(NotificationsFragment())
-                R.id.profile -> openFragment(ProfileFragment())
+                R.id.profile -> openFragment(LoggedInProfileFragment())
             }
             true
         }

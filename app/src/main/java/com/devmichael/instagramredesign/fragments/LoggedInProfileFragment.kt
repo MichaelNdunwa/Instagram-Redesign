@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,16 +12,18 @@ import com.devmichael.instagramredesign.R
 import com.devmichael.instagramredesign.adapters.HighlightAdapter
 import com.devmichael.instagramredesign.adapters.ViewPagerAdapter
 import com.devmichael.instagramredesign.databinding.FragmentProfileBinding
-import com.devmichael.instagramredesign.databinding.ProfileToolbarBinding
+import com.devmichael.instagramredesign.fragments.follow_details.FollowDetailsFragment
+import com.devmichael.instagramredesign.fragments.follow_details.FollowersFragment
+import com.devmichael.instagramredesign.fragments.follow_details.FollowingFragment
+import com.devmichael.instagramredesign.fragments.main_user_profile.MyPostFragment
 import com.devmichael.instagramredesign.fragments.main_user_profile.ProfileSettingsDialogFragment
 import com.devmichael.instagramredesign.models.HighlightModel
 import com.devmichael.instagramredesign.utils.FirebaseUtils
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.FirebaseDatabase
 
-class ProfileFragment : Fragment() {
+class LoggedInProfileFragment() : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
@@ -41,11 +42,22 @@ class ProfileFragment : Fragment() {
           numberOfFollowing()*/
         firebaseUtils.numberOfFollowers(loggedInUser!!.uid, binding.followersCounter)
         firebaseUtils.numberOfFollowing(loggedInUser!!.uid, binding.followingCounter)
+//        binding.followersCounter.text = firebaseUtils.numberOfFollowers(loggedInUser!!.uid)
+//        binding.followingCounter.text = firebaseUtils.numberOfFollowing(loggedInUser!!.uid)
 
 
         firebaseUtils.userName(loggedInUser!!.uid, binding.userName)
         firebaseUtils.fullName(loggedInUser!!.uid, binding.fullName)
         firebaseUtils.biography(loggedInUser!!.uid, binding.biography)
+
+        // goto follow details:
+        binding.apply {
+            val fragmentManager = (activity as AppCompatActivity).supportFragmentManager
+            followersLayout.setOnClickListener {fragmentManager.beginTransaction().replace(R.id.fragmentContainer, FollowDetailsFragment()).addToBackStack("followersFragment").commit() }
+            followingLayout.setOnClickListener {fragmentManager.beginTransaction().replace(R.id.fragmentContainer, FollowDetailsFragment()).addToBackStack("followingFragment").commit() }
+            postLayout.setOnClickListener { viewPager.setCurrentItem(0, true) }
+        }
+
 
         setUpProfileToolbar()
         createHighlight()
@@ -55,48 +67,6 @@ class ProfileFragment : Fragment() {
 
         return binding.root
     }
-    /*
-        private fun numberOfFollowers() {
-            val followersRef = loggedInUser!!.uid.let { currentUserId ->
-                FirebaseDatabase.getInstance().reference
-                    .child("follow").child(currentUserId)
-                    .child("followers")
-            }
-
-            followersRef.addValueEventListener(object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        binding.followersCounter.text = snapshot.childrenCount.toString()
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-            })
-        }
-
-        private fun numberOfFollowing() {
-            val followersRef = loggedInUser!!.uid.let { currentUserId ->
-                FirebaseDatabase.getInstance().reference
-                    .child("follow").child(currentUserId)
-                    .child("following")
-            }
-
-            followersRef.addValueEventListener(object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        binding.followingCounter.text = snapshot.childrenCount.toString()
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-            })
-        }*/
 
     private fun setUpProfileToolbar() {
         val toolbar = binding.navAndTitleToolbar

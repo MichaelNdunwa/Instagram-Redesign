@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.devmichael.instagramredesign" />
+                  <option name="mobileSdkAppId" value="1:809645008950:android:25278e3feb00c215cf9097" />
+                  <option name="projectId" value="instagram-redesign-389e6" />
+                  <option name="projectNumber" value="809645008950" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
