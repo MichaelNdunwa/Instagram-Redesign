@@ -2,6 +2,7 @@ package com.devmichael.instagramredesign.signup_and_login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -9,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.devmichael.instagramredesign.R
 import com.devmichael.instagramredesign.activities.MyFeedActivity
 import com.devmichael.instagramredesign.databinding.ActivityLandingBinding
+import com.google.android.material.internal.ViewUtils.hideKeyboard
 import com.google.firebase.auth.FirebaseAuth
 
 class LandingActivity : AppCompatActivity() {
@@ -37,6 +39,13 @@ class LandingActivity : AppCompatActivity() {
         binding.userSignUp.setOnClickListener {
             startActivity(Intent(this, UserSignUpActivity::class.java))
         }
+
+/*        binding.root.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                hideKeyboard(currentFocus ?: binding.root)
+            }
+            false
+        }*/
 
     }
 

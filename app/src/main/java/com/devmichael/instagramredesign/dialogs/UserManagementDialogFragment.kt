@@ -1,4 +1,4 @@
-package com.devmichael.instagramredesign.fragments
+package com.devmichael.instagramredesign.dialogs
 
 import android.app.Dialog
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.devmichael.instagramredesign.R
 import com.devmichael.instagramredesign.databinding.FragmentUserManagementBinding
+import com.devmichael.instagramredesign.fragments.UserProfileFragment
 import com.devmichael.instagramredesign.models.UserModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -47,10 +48,7 @@ class UserManagementDialogFragment(
         }
 
         binding.username.text = userName
-        binding.unfollowButton.setOnClickListener {
-            unfollowAction()
-
-        }
+        binding.unfollowButton.setOnClickListener { unfollowAction() }
 
     }
 

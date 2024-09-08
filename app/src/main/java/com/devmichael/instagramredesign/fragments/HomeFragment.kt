@@ -35,27 +35,44 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        // When the searchbar is clicked:
+        binding.searchBar.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, ExploreFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
         return binding.root
     }
 
     private fun createStatus() {
         val statusList = mutableListOf<StatusModel>()
         repeat(15) {
-            statusList.add(StatusModel(R.drawable.reading_alone, R.drawable.ayo_profile_image, "Ayo"))
+            statusList.add(
+                StatusModel(
+                    R.drawable.reading_alone,
+                    R.drawable.ayo_profile_image,
+                    "Ayo"
+                )
+            )
         }
 
         binding.statusRecyclerView.adapter = StatusAdapter(statusList)
         binding.statusRecyclerView.setHasFixedSize(true)
         binding.statusRecyclerView.setItemViewCacheSize(10)
-        binding.statusRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.statusRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun createPost(number: Int) {
         val postList = mutableListOf<PostModel>()
         repeat(number) {
             postList.add(
-                PostModel(R.drawable.ayo_profile_image, "Ayo", "New York",
-                    "June 11", R.drawable.reading_alone, "New York is wonderful.")
+                PostModel(
+                    R.drawable.ayo_profile_image, "Ayo", "New York",
+                    "June 11", R.drawable.reading_alone, "New York is wonderful."
+                )
             )
         }
 

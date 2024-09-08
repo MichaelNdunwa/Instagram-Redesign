@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/bottom_sheet_dialog_background"
     android:layout_height="wrap_content"
-    tools:context=".fragments.UserManagementDialogFragment">
+    tools:context=".dialogs.UserManagementDialogFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView

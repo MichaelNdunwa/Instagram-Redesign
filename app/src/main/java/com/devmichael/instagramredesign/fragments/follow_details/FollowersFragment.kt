@@ -21,7 +21,7 @@ class FollowersFragment(private val followersIdList: List<String>) : Fragment() 
 
     private var _binding: FragmentFollowersBinding? = null
     private val binding get() = _binding!!
-    private val followersList: MutableList<UserModel> = mutableListOf()
+    private var followersList: MutableList<UserModel> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +48,8 @@ class FollowersFragment(private val followersIdList: List<String>) : Fragment() 
                     }
                 }
 
-                allUsers.forEach { if (it.uid in followersIdList) followersList.add(it) }
+//                allUsers.forEach { if (it.uid in followersIdList) followersList.add(it) }
+                followersList = allUsers.filter { it.uid in followersIdList }.toMutableList()
 
                 // Set up the RecyclerView:
                 binding.followersRecyclerView.apply {

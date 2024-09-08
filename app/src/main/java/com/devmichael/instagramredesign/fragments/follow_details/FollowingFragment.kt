@@ -50,11 +50,12 @@ class FollowingFragment(private val followingIdList: List<String>) : Fragment() 
                     }
                 }
                 allUsers.forEach {
-                    if (it.uid in followingIdList) followingList.add(it)
+                    if (it.uid in followingIdList)  {
+//                        followingList.add(it)
+                        if (it !in followingList) followingList.add(it)
+                    }
                 }
 
-          /*     Toast.makeText(activity, "Following List: $followingList", Toast.LENGTH_SHORT).show()
-                Log.d("FollowingList", "Following List: $followingList")*/
                 // Set up the RecyclerView:
                 binding.followingRecyclerView.apply {
                     adapter = FollowingAdapter(followingList, requireActivity() as AppCompatActivity)

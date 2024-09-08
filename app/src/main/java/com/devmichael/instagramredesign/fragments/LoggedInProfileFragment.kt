@@ -53,8 +53,16 @@ class LoggedInProfileFragment() : Fragment() {
         // goto follow details:
         binding.apply {
             val fragmentManager = (activity as AppCompatActivity).supportFragmentManager
-            followersLayout.setOnClickListener {fragmentManager.beginTransaction().replace(R.id.fragmentContainer, FollowDetailsFragment()).addToBackStack("followersFragment").commit() }
-            followingLayout.setOnClickListener {fragmentManager.beginTransaction().replace(R.id.fragmentContainer, FollowDetailsFragment()).addToBackStack("followingFragment").commit() }
+            followersLayout.setOnClickListener {
+                fragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, FollowDetailsFragment(loggedInUser?.uid.toString()))
+                    .addToBackStack("followersFragment").commit()
+            }
+            followingLayout.setOnClickListener {
+                fragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, FollowDetailsFragment(loggedInUser?.uid.toString()))
+                    .addToBackStack("followingFragment").commit()
+            }
             postLayout.setOnClickListener { viewPager.setCurrentItem(0, true) }
         }
 

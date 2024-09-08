@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class FollowDetailsFragment : Fragment() {
+class FollowDetailsFragment(val userId: String) : Fragment() {
 
     private var _binding: FragmentFolowDetailsBinding? = null
     private val binding get() = _binding!!
@@ -48,7 +48,7 @@ class FollowDetailsFragment : Fragment() {
 
 
     private fun getNumberOfFollowersAndFollowing() {
-        val userId = loggedInUser!!.uid
+//        val userId = loggedInUser!!.uid
 
         val followRef = FirebaseDatabase.getInstance().reference
             .child("follow").child(userId)
@@ -99,6 +99,7 @@ class FollowDetailsFragment : Fragment() {
         }
 
         // Set the text of the toolbar
+        // The the profile username from the firebase utils I created:
         firebaseUtils.userName(loggedInUser!!.uid, binding.username)
     }
 

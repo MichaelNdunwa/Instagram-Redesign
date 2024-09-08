@@ -87,18 +87,39 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <EditText
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/search_bar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/search_bar_background"
                 android:drawableStart="@drawable/search_icon"
                 android:drawablePadding="10dp"
-                android:hint="Search"
-                android:padding="10dp"
-                android:textColorHint="@color/black" />
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/search_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/search_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/search_icon"
+                    android:layout_marginStart="10dp"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toTopOf="@id/search_icon" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/statusRecyclerView"

@@ -15,11 +15,12 @@ import com.devmichael.instagramredesign.R
 import com.devmichael.instagramredesign.adapters.HighlightAdapter
 import com.devmichael.instagramredesign.adapters.ViewPagerAdapter
 import com.devmichael.instagramredesign.databinding.FragmentOtherUserProfileBinding
+import com.devmichael.instagramredesign.dialogs.UserManagementDialogFragment
+import com.devmichael.instagramredesign.fragments.follow_details.FollowDetailsFragment
 import com.devmichael.instagramredesign.models.HighlightModel
 import com.devmichael.instagramredesign.models.UserModel
 import com.devmichael.instagramredesign.utils.FirebaseUtils
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -43,11 +44,30 @@ class UserProfileFragment(private val user: UserModel) : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentOtherUserProfileBinding.inflate(inflater, container, false)
 
+        // Load profile details
         binding.apply {
             fullName.text = user.fullName
             Picasso.get().load(user.profileImage).placeholder(R.drawable.default_profile_image)
                 .into(profileImage)
             biography.text = user.bio
+
+            // get number of followers and followings:
+            firebaseUtils.numberOfFollowers(user.uid, binding.followersCounter)
+            firebaseUtils.numberOfFollowing(user.uid, binding.followingCounter)
+
+            // goto follow details:
+            val fragmentManager = (activity as AppCompatActivity).supportFragmentManager
+            followersLayout.setOnClickListener {
+                fragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, FollowDetailsFragment(user.uid))
+                    .addToBackStack("followersFragment").commit()
+            }
+            followingLayout.setOnClickListener {
+                fragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, FollowDetailsFragment(user.uid))
+                    .addToBackStack("followingFragment").commit()
+            }
+            postLayout.setOnClickListener { viewPager.setCurrentItem(0, true) }
         }
 
 //        followAction()
@@ -187,32 +207,6 @@ class UserProfileFragment(private val user: UserModel) : Fragment() {
         }
     }
 
-    /*private fun followAction() {
-        binding.apply {
-            followButton.setOnClickListener {
-                if (notFollowing!!) {
-                    firebaseUser?.uid.let { currentUserId ->
-                        FirebaseDatabase.getInstance().reference
-                            .child("Follow").child(currentUserId.toString())
-                            .child("Following").child(user.uid)
-                            .setValue(true).addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-//                                    firebaseUser?.uid.let { currentUserId->
-                                        FirebaseDatabase.getInstance().reference
-                                            .child("Follow").child(user.uid)
-                                            .child("Followers").child( currentUserId.toString())
-                                            .setValue(true).addOnCompleteListener { task ->
-                                                if (task.isSuccessful) {
-                                                }
-                                            }
-//                                    }
-                                }
-                            }
-                    }
-                }
-            }
-        }
-    }*/
     private fun followAction() {
         if (notFollowing!!) {
             firebaseUser?.uid.let { currentUserId ->

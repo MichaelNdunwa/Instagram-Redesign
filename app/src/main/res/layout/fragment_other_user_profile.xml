@@ -62,74 +62,95 @@
                     app:layout_constraintStart_toStartOf="@id/fullName"
                     app:layout_constraintTop_toBottomOf="@id/fullName" />
 
-                <TextView
-                    android:id="@+id/postCounter"
+                <LinearLayout
+                    android:id="@+id/postLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    app:layout_constraintEnd_toEndOf="@id/posts"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/posts"
-                    app:layout_constraintTop_toTopOf="@id/profileImage" />
-
-                <TextView
-                    android:id="@+id/posts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Posts"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toStartOf="@id/followers"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@id/followersLayout"
                     app:layout_constraintStart_toEndOf="@id/profileImage"
-                    app:layout_constraintTop_toBottomOf="@id/postCounter" />
+                    app:layout_constraintTop_toTopOf="@id/profileImage">
 
-                <TextView
-                    android:id="@+id/followers"
+                    <TextView
+                        android:id="@+id/postCounter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/posts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Posts"
+                        android:textColor="@color/red"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/followersLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Followers"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@id/posts"
-                    app:layout_constraintEnd_toStartOf="@id/following"
-                    app:layout_constraintStart_toEndOf="@id/posts" />
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@id/postLayout"
+                    app:layout_constraintEnd_toStartOf="@id/followingLayout"
+                    app:layout_constraintStart_toEndOf="@id/postLayout"
+                    app:layout_constraintTop_toTopOf="@id/postLayout">
 
-                <TextView
-                    android:id="@+id/following"
+                    <TextView
+                        android:id="@+id/followersCounter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/followers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Followers"
+                        android:textColor="@color/red"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/followingLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Following"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@id/followers"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@id/followersLayout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/followers" />
+                    app:layout_constraintStart_toEndOf="@id/followersLayout"
+                    app:layout_constraintTop_toTopOf="@id/followersLayout">
 
-                <TextView
-                    android:id="@+id/followersCounter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    app:layout_constraintEnd_toEndOf="@id/followers"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/followers"
-                    app:layout_constraintTop_toTopOf="@id/postCounter" />
+                    <TextView
+                        android:id="@+id/followingCounter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/followingCounter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    app:layout_constraintEnd_toEndOf="@id/following"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/following"
-                    app:layout_constraintTop_toTopOf="@id/followersCounter" />
+                    <TextView
+                        android:id="@+id/following"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Following"
+                        android:textColor="@color/red"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/follow_button"
@@ -144,8 +165,8 @@
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@id/menuButton"
-                    app:layout_constraintStart_toStartOf="@id/posts"
-                    app:layout_constraintTop_toBottomOf="@id/posts" />
+                    app:layout_constraintStart_toStartOf="@id/postLayout"
+                    app:layout_constraintTop_toBottomOf="@id/postLayout" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/menuButton"
@@ -155,7 +176,7 @@
                     app:civ_border_color="@color/blue"
                     app:civ_border_width="2dp"
                     app:layout_constraintBottom_toBottomOf="@id/follow_button"
-                    app:layout_constraintEnd_toEndOf="@id/following"
+                    app:layout_constraintEnd_toEndOf="@id/followingLayout"
                     app:layout_constraintTop_toTopOf="@id/follow_button" />
 
                 <androidx.recyclerview.widget.RecyclerView

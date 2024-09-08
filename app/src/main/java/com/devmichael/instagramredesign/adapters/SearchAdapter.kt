@@ -37,7 +37,7 @@ class SearchAdapter(private var searchList: List<UserModel>, private var activit
                 val loggedInUserId = FirebaseAuth.getInstance().currentUser!!.uid
                 if (loggedInUserId == searchResult.uid) {
                     activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, LoggedInProfileFragment()).addToBackStack(null).commit()
-                } else {
+                 } else {
                     val fragment = UserProfileFragment(user = searchResult)
                     val fragmentManager = activity.supportFragmentManager
                     fragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).addToBackStack(null).commit()
