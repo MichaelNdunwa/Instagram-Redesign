@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.InstagramRedesign"
+        tools:targetApi="31" >
+        <activity
+            android:name=".signup_and_login.UserSignUpActivity"
+            android:theme="@style/EditTextTheme"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
+            android:name=".signup_and_login.FacebookLogInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".signup_and_login.UserSignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".signup_and_login.LandingActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.AddPostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MessageActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.MyFeedActivity" />
+        <activity
+            android:name=".activities.SettingsAndPrivacyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MyFeedActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+    </application>
+
+</manifest>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_margin="12dp"
+    android:layout_height="wrap_content">
+<!--
+    <androidx.cardview.widget.CardView
+        android:id="@+id/statusImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:cardCornerRadius="360dp"
+        android:padding="100dp"
+        app:layout_constraintCircleRadius="360dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/first_image" />
+    </androidx.cardview.widget.CardView>-->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/statusImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/first_image" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="centerCrop"
+        app:civ_border_color="@color/white"
+        android:src="@drawable/my_profile"
+        app:civ_border_width="2dp"
+        android:translationY="-20dp"
+        app:layout_constraintEnd_toEndOf="@id/statusImage"
+        app:layout_constraintTop_toBottomOf="@id/statusImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pedro"
+        android:id="@+id/name"
+        app:layout_constraintTop_toBottomOf="@id/statusImage"
+        app:layout_constraintStart_toStartOf="@id/statusImage"
+        app:layout_constraintEnd_toEndOf="@id/statusImage"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColorHint="@color/black"
+        android:textSize="16sp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
