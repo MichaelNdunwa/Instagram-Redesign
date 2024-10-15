@@ -1,6 +1,7 @@
 package com.devmichael.instagramredesign.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,15 +14,16 @@ import com.devmichael.instagramredesign.adapters.HighlightAdapter
 import com.devmichael.instagramredesign.adapters.ViewPagerAdapter
 import com.devmichael.instagramredesign.databinding.FragmentProfileBinding
 import com.devmichael.instagramredesign.fragments.follow_details.FollowDetailsFragment
-import com.devmichael.instagramredesign.fragments.follow_details.FollowersFragment
-import com.devmichael.instagramredesign.fragments.follow_details.FollowingFragment
-import com.devmichael.instagramredesign.fragments.main_user_profile.MyPostFragment
 import com.devmichael.instagramredesign.fragments.main_user_profile.ProfileSettingsDialogFragment
 import com.devmichael.instagramredesign.models.HighlightModel
 import com.devmichael.instagramredesign.utils.FirebaseUtils
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LoggedInProfileFragment() : Fragment() {
 
@@ -29,6 +31,7 @@ class LoggedInProfileFragment() : Fragment() {
     private val binding get() = _binding!!
     private var loggedInUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
     private var firebaseUtils: FirebaseUtils = FirebaseUtils()
+    private lateinit var username: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,14 +40,14 @@ class LoggedInProfileFragment() : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
+        //get username:
+        getUsername()
+
         // get the number of followers and number of following:
         /*  numberOfFollowers()
           numberOfFollowing()*/
         firebaseUtils.numberOfFollowers(loggedInUser!!.uid, binding.followersCounter)
         firebaseUtils.numberOfFollowing(loggedInUser!!.uid, binding.followingCounter)
-//        binding.followersCounter.text = firebaseUtils.numberOfFollowers(loggedInUser!!.uid)
-//        binding.followingCounter.text = firebaseUtils.numberOfFollowing(loggedInUser!!.uid)
-
 
         firebaseUtils.userName(loggedInUser!!.uid, binding.userName)
         firebaseUtils.fullName(loggedInUser!!.uid, binding.fullName)
@@ -55,12 +58,16 @@ class LoggedInProfileFragment() : Fragment() {
             val fragmentManager = (activity as AppCompatActivity).supportFragmentManager
             followersLayout.setOnClickListener {
                 fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, FollowDetailsFragment(loggedInUser?.uid.toString()))
+                    .replace(R.id.fragmentContainer, FollowDetailsFragment(
+                        loggedInUser?.uid.toString(),username
+                    ))
                     .addToBackStack("followersFragment").commit()
             }
             followingLayout.setOnClickListener {
                 fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, FollowDetailsFragment(loggedInUser?.uid.toString()))
+                    .replace(R.id.fragmentContainer, FollowDetailsFragment(
+                        loggedInUser?.uid.toString(), username
+                    ))
                     .addToBackStack("followingFragment").commit()
             }
             postLayout.setOnClickListener { viewPager.setCurrentItem(0, true) }
@@ -74,6 +81,24 @@ class LoggedInProfileFragment() : Fragment() {
 
 
         return binding.root
+    }
+
+    private fun getUsername() {
+            val userRef = FirebaseDatabase.getInstance().reference
+                .child("users").child(loggedInUser?.uid.toString())
+                .child("username")
+
+            userRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        username = snapshot.value.toString()
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("FirebaseUtils", "Error fetching username", error.toException())
+                }
+            })
     }
 
     private fun setUpProfileToolbar() {

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,8 @@ import com.devmichael.instagramredesign.adapters.SearchAdapter
 import com.devmichael.instagramredesign.databinding.FragmentExploreBinding
 import com.devmichael.instagramredesign.models.ExploreModel
 import com.devmichael.instagramredesign.models.UserModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -25,7 +28,8 @@ class ExploreFragment : Fragment() {
 
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
-    private var users: MutableList<UserModel> = mutableListOf()
+    private var userList: MutableList<UserModel> = mutableListOf()
+    private var currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,8 +38,6 @@ class ExploreFragment : Fragment() {
         _binding = FragmentExploreBinding.inflate(inflater, container, false)
 
         setUpExploreRecyclerView()
-        searchViewResult()
-
         return binding.root
     }
 
@@ -75,7 +77,7 @@ class ExploreFragment : Fragment() {
     }
 
     private fun searchViewResult() {
-        val searchList = users
+        val searchList = userList
         val searchAdapter = SearchAdapter(searchList, requireActivity() as AppCompatActivity)
 
         // SearchViewResultRecyclerView:
@@ -87,7 +89,6 @@ class ExploreFragment : Fragment() {
         //Implement SearchAdapter
         binding.searchView.editText.doOnTextChanged { text, start, before, count ->
             //TODO: Remember this retrieveUsers() function:
-//            retrieveUsers()
             searchAdapter.filter(text.toString())
         }
 
@@ -98,70 +99,22 @@ class ExploreFragment : Fragment() {
         val usersRef = FirebaseDatabase.getInstance().getReference().child("users")
         usersRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-//                if (binding.searchView.editText.text.toString() == "") {
-                    users.clear()
+                val users: MutableList<UserModel> = mutableListOf()
+                users.clear()
                     for (userSnapshot in snapshot.children) {
                         val user = userSnapshot.getValue(UserModel::class.java)
                         if (user != null) {
                             users.add(user)
                         }
                     }
-//                }
+                // Remove the current user from the list
+                userList = users.filter { it.uid != currentUser?.uid }.toMutableList()
+                searchViewResult()
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
         })
+
     }
-
-  /*  private fun retrieveUsers() {
-        val usersRef = FirebaseDatabase.getInstance().getReference().child("users")
-        usersRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (binding.searchView.editText.text.toString() == "") {
-                    users.clear()
-                    val paginator = Paginator(snapshot, 10) // Retrieve 10 users at a time
-                    for (userSnapshot in paginator.next()) {
-                        val user = userSnapshot.getValue(UserModel::class.java)
-                        if (user != null) {
-                            users.add(user)
-                        }
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }
-
-    class Paginator(private val snapshot: DataSnapshot, private val limit: Int) {
-        private var lastKey: String? = null
-        private var isLastPage: Boolean = false
-
-        fun next(): List<DataSnapshot> {
-            val list = mutableListOf<DataSnapshot>()
-            var i = 0
-            for (child in snapshot.children) {
-                if (i >= limit) {
-                    lastKey = child.key
-                    break
-                }
-                list.add(child)
-                i++
-            }
-            isLastPage = i < snapshot.childrenCount
-            return list
-        }
-
-        fun hasNextPage(): Boolean {
-            return !isLastPage
-        }
-    }*/
-
-
 }

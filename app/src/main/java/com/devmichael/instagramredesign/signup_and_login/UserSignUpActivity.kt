@@ -1,18 +1,20 @@
 package com.devmichael.instagramredesign.signup_and_login
 
+import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.widget.addTextChangedListener
 import com.devmichael.instagramredesign.R
 import com.devmichael.instagramredesign.activities.MyFeedActivity
 import com.devmichael.instagramredesign.databinding.ActivityUserSignUpBinding
@@ -25,6 +27,7 @@ class UserSignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserSignUpBinding
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,6 +41,14 @@ class UserSignUpActivity : AppCompatActivity() {
 
         binding.navBackButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+
+        binding.main.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+               val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+               imm.hideSoftInputFromWindow(v.windowToken, 0)
+            }
+            false
         }
 
         /*binding.usernameEditText.addTextChangedListener(object : TextWatcher {

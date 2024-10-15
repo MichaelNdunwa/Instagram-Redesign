@@ -59,12 +59,12 @@ class UserProfileFragment(private val user: UserModel) : Fragment() {
             val fragmentManager = (activity as AppCompatActivity).supportFragmentManager
             followersLayout.setOnClickListener {
                 fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, FollowDetailsFragment(user.uid))
+                    .replace(R.id.fragmentContainer, FollowDetailsFragment(user.uid, user.username))
                     .addToBackStack("followersFragment").commit()
             }
             followingLayout.setOnClickListener {
                 fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, FollowDetailsFragment(user.uid))
+                    .replace(R.id.fragmentContainer, FollowDetailsFragment(user.uid, user.username))
                     .addToBackStack("followingFragment").commit()
             }
             postLayout.setOnClickListener { viewPager.setCurrentItem(0, true) }

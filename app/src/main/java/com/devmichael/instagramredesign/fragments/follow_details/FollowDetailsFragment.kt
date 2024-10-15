@@ -1,12 +1,10 @@
 package com.devmichael.instagramredesign.fragments.follow_details
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.devmichael.instagramredesign.adapters.FollowDetailsAdapter
 import com.devmichael.instagramredesign.databinding.FragmentFolowDetailsBinding
@@ -22,16 +20,13 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class FollowDetailsFragment(val userId: String) : Fragment() {
+class FollowDetailsFragment(val userId: String, val username: String) : Fragment() {
 
     private var _binding: FragmentFolowDetailsBinding? = null
     private val binding get() = _binding!!
-    private var firebaseUtils: FirebaseUtils = FirebaseUtils()
-    private val loggedInUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
     private var numberOfFollowers: Int? = null
     private var numberOfFollowing: Int? = null
     private var followersList: MutableList<FollowersModel> = mutableListOf()
-    private var followingList: MutableList<FollowingModel> = mutableListOf()
     private var followersIdList: MutableList<String> = mutableListOf()
     private var followingIdList: MutableList<String> = mutableListOf()
 
@@ -48,8 +43,6 @@ class FollowDetailsFragment(val userId: String) : Fragment() {
 
 
     private fun getNumberOfFollowersAndFollowing() {
-//        val userId = loggedInUser!!.uid
-
         val followRef = FirebaseDatabase.getInstance().reference
             .child("follow").child(userId)
 
@@ -70,10 +63,6 @@ class FollowDetailsFragment(val userId: String) : Fragment() {
                     followingIdList.add(it.key.toString())
                 }
 
-//                FollowersFragment(followersList) // passing the list of followers to the FollowersFragment
-//                FollowingFragment(followingList) // passing the list of following to the FollowingFragment
-               /* Toast.makeText(activity, "Following List: $followersIdList", Toast.LENGTH_LONG).show()
-                Log.d("FollowingIdList", "Following List: $followersIdList")*/
                 setUpSwipeView()
             }
 
@@ -99,8 +88,7 @@ class FollowDetailsFragment(val userId: String) : Fragment() {
         }
 
         // Set the text of the toolbar
-        // The the profile username from the firebase utils I created:
-        firebaseUtils.userName(loggedInUser!!.uid, binding.username)
+        binding.username.text = username
     }
 
     private fun setUpSwipeView() {
