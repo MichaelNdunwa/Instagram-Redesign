@@ -20,14 +20,18 @@ class FollowersAdapter(private var followerList: List<UserModel>, private var ac
     private lateinit var binding: FollowersViewHolderBinding
     private var loggedInUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
-    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int):
-            FollowersAdapter.FollowersViewHolder {
+    fun filterFollowersList(filteredList: List<UserModel>) {
+        followerList = filteredList
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): FollowersViewHolder {
         val from = LayoutInflater.from(parent.context)
         binding = FollowersViewHolderBinding.inflate(from, parent, false)
         return FollowersViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FollowersAdapter.FollowersViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FollowersViewHolder, position: Int) {
         val follower = followerList[position]
         holder.binding.apply {
             Picasso.get().load(follower.profileImage).placeholder(R.drawable.default_profile_image).into(profileImage)
@@ -62,8 +66,6 @@ class FollowersAdapter(private var followerList: List<UserModel>, private var ac
     override fun getItemCount(): Int = followerList.size
 
     inner class FollowersViewHolder(val binding: FollowersViewHolderBinding):
-            RecyclerView.ViewHolder(binding.root) {
-
-            }
+            RecyclerView.ViewHolder(binding.root) { }
 
 }

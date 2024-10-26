@@ -1,6 +1,8 @@
 package com.devmichael.instagramredesign.fragments.follow_details
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,7 +27,8 @@ class FollowingFragment(private val followingIdList: List<String>) : Fragment() 
 
     private var _binding: FragmentFollowingBinding? = null
     private val binding get() = _binding!!
-    private val followingList: MutableList<UserModel> = mutableListOf()
+    private var followingList: MutableList<UserModel> = mutableListOf()
+    private lateinit var adapter: FollowingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +41,9 @@ class FollowingFragment(private val followingIdList: List<String>) : Fragment() 
     }
 
     private fun listFollowing() {
+        // initializing:
+        followingList = mutableListOf<UserModel>()
+        adapter = FollowingAdapter(followingList, requireActivity() as AppCompatActivity)
         val allUsers: MutableList<UserModel> = mutableListOf()
         val userRef = FirebaseDatabase.getInstance().getReference().child("users")
         userRef.addValueEventListener(object: ValueEventListener {
@@ -58,7 +64,8 @@ class FollowingFragment(private val followingIdList: List<String>) : Fragment() 
 
                 // Set up the RecyclerView:
                 binding.followingRecyclerView.apply {
-                    adapter = FollowingAdapter(followingList, requireActivity() as AppCompatActivity)
+//                    adapter = FollowingAdapter(followingList, requireActivity() as AppCompatActivity)
+                    adapter = this@FollowingFragment.adapter
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 }
             }
@@ -69,6 +76,22 @@ class FollowingFragment(private val followingIdList: List<String>) : Fragment() 
 
         })
 
+        // Set up search bar:
+        binding.searchBar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                adapter.filterFollowingList(
+                    followingList.filter {
+                        it.username.contains(s.toString(), ignoreCase = true) ||
+                                it.fullName.contains(s.toString(), ignoreCase = true)
+                    }
+                )
+            }
+
+            override fun afterTextChanged(s: Editable?) { }
+
+        })
 
     }
 

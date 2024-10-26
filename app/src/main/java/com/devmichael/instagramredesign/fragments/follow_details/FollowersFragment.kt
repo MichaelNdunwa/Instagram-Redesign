@@ -1,6 +1,8 @@
 package com.devmichael.instagramredesign.fragments.follow_details
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +24,7 @@ class FollowersFragment(private val followersIdList: List<String>) : Fragment() 
     private var _binding: FragmentFollowersBinding? = null
     private val binding get() = _binding!!
     private var followersList: MutableList<UserModel> = mutableListOf()
+    private lateinit var adapter: FollowersAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +39,9 @@ class FollowersFragment(private val followersIdList: List<String>) : Fragment() 
     }
 
     private fun listFollowers() {
+        // initializing:
+        followersList = mutableListOf<UserModel>()
+        adapter = FollowersAdapter(followersList, requireActivity() as AppCompatActivity)
         val allUsers: MutableList<UserModel> = mutableListOf()
         val userRef = FirebaseDatabase.getInstance().getReference().child("users")
         userRef.addValueEventListener(object: ValueEventListener {
@@ -48,12 +54,16 @@ class FollowersFragment(private val followersIdList: List<String>) : Fragment() 
                     }
                 }
 
-//                allUsers.forEach { if (it.uid in followersIdList) followersList.add(it) }
-                followersList = allUsers.filter { it.uid in followersIdList }.toMutableList()
+                allUsers.forEach {
+                    if (it.uid in followersIdList) {
+                        if (it !in followersList) followersList.add(it)
+                    }
+                }
 
                 // Set up the RecyclerView:
                 binding.followersRecyclerView.apply {
-                    adapter = FollowersAdapter(followersList, requireActivity() as AppCompatActivity)
+//                    adapter = FollowersAdapter(followersList, requireActivity() as AppCompatActivity)
+                    adapter = this@FollowersFragment.adapter
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 }
             }
@@ -61,6 +71,23 @@ class FollowersFragment(private val followersIdList: List<String>) : Fragment() 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
+
+        })
+
+        // Set up the search bar:
+        binding.searchBar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int ) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int ) {
+                adapter.filterFollowersList(
+                    followersList.filter {
+                        it.username.contains(s.toString(), ignoreCase = true) ||
+                                it.fullName.contains(s.toString(), ignoreCase = true)
+                    }
+                )
+            }
+
+            override fun afterTextChanged(s: Editable?) { }
 
         })
 

@@ -32,16 +32,18 @@ class FollowingAdapter(
     private lateinit var binding: FollowingViewHolderBinding
     private var loggedInUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): FollowingAdapter.FollowingViewHolder {
+    fun filterFollowingList(filteredList: List<UserModel>) {
+        followingList = filteredList
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowingViewHolder {
         val from = LayoutInflater.from(parent.context)
         binding = FollowingViewHolderBinding.inflate(from, parent, false)
         return FollowingViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FollowingAdapter.FollowingViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FollowingViewHolder, position: Int) {
         val following = followingList[position]
         holder.binding.apply {
             Picasso.get().load(following.profileImage).placeholder(R.drawable.default_profile_image).into(profileImage)

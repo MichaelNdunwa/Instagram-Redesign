@@ -79,17 +79,9 @@ class UserSignInActivity : AppCompatActivity() {
         val password = binding.passwordEditText.text.toString()
 
         when {
-            TextUtils.isEmpty(email) -> Toast.makeText(
-                this,
-                "email is required.",
-                Toast.LENGTH_SHORT
-            ).show()
+            TextUtils.isEmpty(email) -> Toast.makeText(this, "email is required.", Toast.LENGTH_SHORT).show()
 
-            TextUtils.isEmpty(password) -> Toast.makeText(
-                this,
-                "password is required.",
-                Toast.LENGTH_SHORT
-            ).show()
+            TextUtils.isEmpty(password) -> Toast.makeText(this, "password is required.", Toast.LENGTH_SHORT).show()
 
             else -> {
                 /*val progressDialog = ProgressDialog(this).apply {
